@@ -69,7 +69,7 @@ public class CrearDeseos extends HttpServlet {
 
             cd.deseos(d);
 
-            RequestDispatcher rq = request.getRequestDispatcher("insertarDeseos.jsp");
+            RequestDispatcher rq = request.getRequestDispatcher("InsertarDeseos.jsp");
 
             if (resultado == true) {
                 request.setAttribute("resultado", true);
