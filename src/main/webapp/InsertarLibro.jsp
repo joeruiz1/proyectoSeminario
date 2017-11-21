@@ -73,7 +73,7 @@
                                      
             </form>
             <h2><a href="index.jsp"> volver al menu</a></h2>
-            <h2><a href="InserTabla"> Listar los Libros</a></h2>
+            <h2><a href="ListarLibros"> Listar los Libros</a></h2>
             
             <p><br>
             </p>

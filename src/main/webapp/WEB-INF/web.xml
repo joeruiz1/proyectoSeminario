@@ -80,6 +80,14 @@
         <servlet-name>OrdenarAutor</servlet-name>
         <url-pattern>/OrdenarAutor</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CrearDeseos</servlet-name>
+        <url-pattern>/CrearDeseos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>verDeseos</servlet-name>
+        <url-pattern>/verDeseos</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
