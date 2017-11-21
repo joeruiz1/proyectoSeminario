@@ -30,7 +30,7 @@ public class CrearDeseos extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try (PrintWriter out = response.getWriter()) {
-            RequestDispatcher rq = request.getRequestDispatcher("insertarDeseos.jsp");
+            RequestDispatcher rq = request.getRequestDispatcher("InsertarDeseos.jsp");
 
             CrudLibro cru = new CrudLibro();
 
