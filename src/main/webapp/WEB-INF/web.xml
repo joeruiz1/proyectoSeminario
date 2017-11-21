@@ -40,6 +40,14 @@
         <servlet-name>OrdenarAutor</servlet-name>
         <servlet-class>Controladores.OrdenarAutor</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CrearDeseos</servlet-name>
+        <servlet-class>Controladores.CrearDeseos</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>verDeseos</servlet-name>
+        <servlet-class>Controladores.verDeseos</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControlinserLibro</servlet-name>
         <url-pattern>/ControlinserLibro</url-pattern>
@@ -80,7 +88,14 @@
         <servlet-name>OrdenarAutor</servlet-name>
         <url-pattern>/OrdenarAutor</url-pattern>
     </servlet-mapping>
-
+    <servlet-mapping>
+        <servlet-name>CrearDeseos</servlet-name>
+        <url-pattern>/CrearDeseos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>verDeseos</servlet-name>
+        <url-pattern>/verDeseos</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
