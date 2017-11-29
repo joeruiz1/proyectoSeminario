@@ -91,6 +91,15 @@
 
                                     </select>
                                 </p>
+                                <p><span>Nombre vendedor</span>
+                                   <input class="contact" type="text" name="nombreVende" value="" />
+                                </p>
+                                <p><span>telefono vendedor</span>
+                                   <input class="contact" type="text" name="teleVende" value="" />
+                                </p>
+                                <p><span>direccion vendedor</span>
+                                   <input class="contact" type="text" name="direcVende" value="" />
+                                </p>
                                 <p style="padding-top: 15px"><span>&nbsp;</span><input class="submit" type="submit" name="contact_submitted" value="submit" /></p>
                             </div>
                           

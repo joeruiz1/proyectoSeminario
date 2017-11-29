@@ -9,6 +9,7 @@ import DAO.CrudFactura;
 import DAO.CrudLibro;
 import VO.Factura;
 import VO.Libro;
+import VO.Vendedor;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -24,7 +25,6 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class CrearFactura extends HttpServlet {
 
-  
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -50,28 +50,33 @@ public class CrearFactura extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        boolean resultado=false;
+        boolean resultado = false;
 
         String id = request.getParameter("id");
         String nombreLi = request.getParameter("nombreLi");
         String numEm = request.getParameter("numEm");
         String cliente = request.getParameter("nombre");
+        String nombreVende = request.getParameter("nombreVende");
+        String teleV=request.getParameter("teleVende");
+        String direcVende=request.getParameter("direcVende");
 
         int fac = Integer.parseInt(id);
         int em = Integer.parseInt(numEm);
+        int teleVende=Integer.parseInt(teleV);
 
         if (id.trim().length() != 0 && nombreLi.trim().length() != 0) {
 
             CrudFactura cr = new CrudFactura();
             CrudLibro cl = new CrudLibro();
             Libro li = new Libro();
+            Vendedor vende = new Vendedor(nombreVende, teleVende, direcVende);
+
+            li = cl.extraerLibro(nombreLi);
+            Factura f = new Factura(cliente, nombreLi, li.getId(), fac, li.getPrecio(), em);
             
-            
-            li=cl.extraerLibro(nombreLi);
-            Factura f=new Factura(cliente, nombreLi, li.getId(), fac, li.getPrecio(), em);
-            
+
             cr.facturar(f);
-            
+
             RequestDispatcher rq = request.getRequestDispatcher("insertarFactura.jsp");
 
             if (resultado == true) {
@@ -81,7 +86,7 @@ public class CrearFactura extends HttpServlet {
             }
 
             rq.forward(request, response);
-       
+
         }
 
     }
