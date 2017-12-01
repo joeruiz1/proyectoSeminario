@@ -7,7 +7,9 @@ package Controladores;
 
 import DAO.CrudFactura;
 import DAO.CrudLibro;
+import DAO.Pago;
 import VO.Factura;
+import VO.FormaPago;
 import VO.Libro;
 import VO.Vendedor;
 import java.io.IOException;
@@ -41,6 +43,14 @@ public class CrearFactura extends HttpServlet {
             } else {
                 request.setAttribute("lis", null);
             }
+            Pago p = new Pago();
+            ArrayList<FormaPago> fp = null;
+            fp = (ArrayList<FormaPago>) p.listarFP();
+            if (fp.size() > 0) {
+                request.setAttribute("fp", fp);
+            } else {
+                request.setAttribute("fp", null);
+            }
             rq.forward(request, response);
         }
 
@@ -59,20 +69,21 @@ public class CrearFactura extends HttpServlet {
         String nombreVende = request.getParameter("nombreVende");
         String teleV=request.getParameter("teleVende");
         String direcVende=request.getParameter("direcVende");
+        String formaPago = request.getParameter("tipoPago");
 
         int fac = Integer.parseInt(id);
         int em = Integer.parseInt(numEm);
         int teleVende=Integer.parseInt(teleV);
 
-        if (id.trim().length() != 0 && nombreLi.trim().length() != 0) {
+        if (id.trim().length() != 0 && nombreLi.trim().length() != 0 && formaPago.trim().length() != 0) {
 
             CrudFactura cr = new CrudFactura();
             CrudLibro cl = new CrudLibro();
             Libro li = new Libro();
             Vendedor vende = new Vendedor(nombreVende, teleVende, direcVende);
-
+            FormaPago fa=new FormaPago();
             li = cl.extraerLibro(nombreLi);
-            Factura f = new Factura(cliente, nombreLi, li.getId(), fac, li.getPrecio(), em);
+            Factura f = new Factura(cliente, nombreLi, li.getId(), fac, li.getPrecio(), em,fa.getId(), fa.getFormarPago());
             
 
             cr.facturar(f);

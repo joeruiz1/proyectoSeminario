@@ -100,12 +100,35 @@
                                 <p><span>direccion vendedor(Barrio)</span>
                                    <input class="contact" type="text" name="direcVende" value="" />
                                 </p>
+                                <p><span>Tipo de pago</span>
+                                    <select class="contact" name="tipoPago">
+                                        <%     //Si la variable que me deben enviar existe  
+                                            if (request.getAttribute("fp") != null) {
+                                                //Capturando informacion variable que me estan enviado.    
+                                                ArrayList<FormaPago> pagos = (ArrayList<FormaPago>) request.getAttribute("fp");
+                                                //Existan activos
+                                                if (pagos != null) {
+                                                    for (FormaPago fpago : pagos) {
+                                        %>
+                                        <option value="<%=fpago.getFormarPago()%>"><%=fpago.getFormarPago()%>
+
+                                        </option>
+                                        <%
+                                            }
+                                        } else {
+                                        %>
+                                        <h1>inserte bien</h1>
+                                        <%
+                                                }
+                                            }
+
+                                        %>
+
+                                    </select>
+                                </p>
                                 <p style="padding-top: 15px"><span>&nbsp;</span><input class="submit" type="submit" name="contact_submitted" value="submit" /></p>
                             </div>
                           
-
-
-
                         </form>
                                           <h2><a href="index.jsp"> volver al menu</a></h2>
                             <h2><a href="VerVentas"> ventas totales</a></h2>

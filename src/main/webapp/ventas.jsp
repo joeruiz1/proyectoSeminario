@@ -44,6 +44,8 @@
                             <td>numero de compra</td>
                             <td>precio</td>
                             <td>Numero Empleado</td>
+                            <td>id pago</td>
+                            <td>Forma de pago</td>
                             
                         </tr>
                         <%
@@ -62,7 +64,8 @@
                             <td><%=es. getNumFac()%></td>
                             <td><%=es.getPrecio()  %></td>
                             <td><%=es.getIdEmple()%></td>
-                           
+                            <td><%=es.getIdPago()%></td> 
+                            <td><%=es.getformapago()%></td> 
                         </tr>
 
                         <%
