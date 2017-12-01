@@ -105,13 +105,14 @@
         <url-pattern>/verDeseos</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ComprasOnline</servlet-name>
-        <url-pattern>/ComprasOnline</url-pattern>
-    </servlet-mapping>
-        <servlet-mapping>
         <servlet-name>ControlPago</servlet-name>
         <url-pattern>/ControlPago</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ComprasOnline</servlet-name>
+        <url-pattern>/ComprasOnline</url-pattern>
+    </servlet-mapping>
+        
     <session-config>
         <session-timeout>
             30
