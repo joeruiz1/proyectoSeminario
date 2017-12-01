@@ -5,6 +5,10 @@
         <servlet-class>Controladores.ControlinserLibro</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ComprasOnline</servlet-name>
+        <servlet-class>control.ComprasOnline</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>ListarLibros</servlet-name>
         <servlet-class>Controladores.ListarLibros</servlet-class>
     </servlet>
@@ -95,6 +99,10 @@
     <servlet-mapping>
         <servlet-name>verDeseos</servlet-name>
         <url-pattern>/verDeseos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ComprasOnline</servlet-name>
+        <url-pattern>/ComprasOnline</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
