@@ -21,7 +21,8 @@ import java.util.List;
  * @author fernando stiven
  */
 public class CrudEmpleado {
-        private Connection connection;
+
+    private Connection connection;
 
     public CrudEmpleado() {
         connection = DbUtil.getConnection();
@@ -36,8 +37,7 @@ public class CrudEmpleado {
             preparedStatement.setInt(2, Emp.getCedula());
             preparedStatement.setString(3, Emp.getContrasena());
             preparedStatement.setString(4, Emp.getUsuario());
-            
-            
+
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
@@ -50,7 +50,7 @@ public class CrudEmpleado {
             PreparedStatement preparedStatement = connection
                     .prepareStatement("delete from Empleado where cedula=?");
             // Parameters start with 1
-            preparedStatement.setInt(1,cedula);
+            preparedStatement.setInt(1, cedula);
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
@@ -68,7 +68,7 @@ public class CrudEmpleado {
             preparedStatement.setString(2, em.getNombre());
             preparedStatement.setString(3, em.getContrasena());
             preparedStatement.setString(4, em.getUsuario());
-            
+
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
@@ -85,11 +85,11 @@ public class CrudEmpleado {
             ResultSet rs = statement.executeQuery("select * from Empleado");
             while (rs.next()) {
                 Empleado li = new Empleado();
-               li.setNombre(rs.getString("nombre"));
-               li.setCedula(rs.getInt("cedula"));
-               li.setContrasena(rs.getString("contrasena"));
-               li.setUsuario(rs.getString("usuario"));
-              
+                li.setNombre(rs.getString("nombre"));
+                li.setCedula(rs.getInt("cedula"));
+                li.setContrasena(rs.getString("contrasena"));
+                li.setUsuario(rs.getString("usuario"));
+
                 users.add(li);
             }
         } catch (SQLException e) {
@@ -100,7 +100,7 @@ public class CrudEmpleado {
     }
 
     public Empleado extraerEmpleados(int contra) {
-        Empleado em=new Empleado();
+        Empleado em = new Empleado();
         try {
             PreparedStatement preparedStatement = connection.
                     prepareStatement("select * from Empleado where userid=?");
@@ -108,11 +108,11 @@ public class CrudEmpleado {
             ResultSet rs = preparedStatement.executeQuery();
 
             if (rs.next()) {
-               em.setNombre(rs.getString("nombre"));
-               em.setCedula(rs.getInt("cedula"));
-               em.setContrasena(rs.getString("contrasena"));
-               em.setUsuario(rs.getString("usuario"));
-              
+                em.setNombre(rs.getString("nombre"));
+                em.setCedula(rs.getInt("cedula"));
+                em.setContrasena(rs.getString("contrasena"));
+                em.setUsuario(rs.getString("usuario"));
+
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -121,5 +121,27 @@ public class CrudEmpleado {
         return em;
     }
 
-}
+    public List<Empleado> mostrarEmpladosUsados() {
+        List<Empleado> users = new ArrayList<Empleado>();
+        try {
+            System.out.println("LLegue hasta aca olii");
+            Statement statement = connection.createStatement();
 
+            ResultSet rs = statement.executeQuery("select empleado.nombre,empleado.cedula,empleado.`contraseña`,empleado.usuario from empleado inner join factura using(cedula) right join libro on(libro.id_libro=factura.idLi) where estado='usado'; ");
+            while (rs.next()) {
+                Empleado li = new Empleado();
+                li.setNombre(rs.getString("nombre"));
+                li.setCedula(rs.getInt("cedula"));
+                li.setContrasena(rs.getString("contraseña"));
+                li.setUsuario(rs.getString("usuario"));
+
+                users.add(li);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return users;
+    }
+
+}

@@ -13,6 +13,10 @@
         <servlet-class>Controladores.ListarLibros</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ControlPago</servlet-name>
+        <servlet-class>Controladores.ControlPago</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>CrearFactura</servlet-name>
         <servlet-class>Controladores.CrearFactura</servlet-class>
     </servlet>
@@ -52,9 +56,9 @@
         <servlet-name>verDeseos</servlet-name>
         <servlet-class>Controladores.verDeseos</servlet-class>
     </servlet>
-        <servlet>
-        <servlet-name>ControlPago</servlet-name>
-        <servlet-class>Controladores.ControlPago</servlet-class>
+    <servlet>
+        <servlet-name>EmpleadosUsados</servlet-name>
+        <servlet-class>Controladores.EmpleadosUsados</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ControlinserLibro</servlet-name>
@@ -112,7 +116,10 @@
         <servlet-name>ComprasOnline</servlet-name>
         <url-pattern>/ComprasOnline</url-pattern>
     </servlet-mapping>
-        
+    <servlet-mapping>
+        <servlet-name>EmpleadosUsados</servlet-name>
+        <url-pattern>/EmpleadosUsados</url-pattern>
+    </servlet-mapping>   
     <session-config>
         <session-timeout>
             30
